@@ -1,0 +1,46 @@
+//hesap makinesi programı
+//canister-> akılı sözleşmeyi temsin etmektedir
+//değişkenler (let-> immuttable (değiştirilemez), var -> mutable (değişime uğrayabilir))
+
+
+actor hesap_makinesi{
+  //ilk veri 0 dan başlamaktadır kullanıcının fonksiyonlarda girgiği sayılar bunun üstünde işlem görmektedir.
+var veri: Int = 0;
+//toplama fonksiyonu
+public func toplama(s: Int) : async Int {
+  //girilen sayıyı sistemde olan değer üstüne eklemektedir
+   veri +=s;
+   //güncellenen veriyi çıktı olarak vermektedir
+   veri
+};
+//cıkarma fonksiyonu
+public func cikarma(s: Int) : async Int {
+  //girilen sayıyı sistemde olan değerden çıkarmaktadır
+   veri -=s;
+   //güncellenen veriyi çıktı olarak vermektedir
+   veri
+}; 
+//çarpma fonksiyonu
+public func carma(s: Int) : async Int {
+  //girilen sayıyı sistemde olan değerle çarpmaktadır
+   veri *=s;
+   //güncellenen veriyi çıktı olarak vermektedir
+   veri
+};
+//bolme fonksiyonu, bölme işleminde sonuç kesinlikle tam sayı gelemeyeceği için Integer tanımın başında soru işareti vardır
+public func bolme(s: Int) : async ?Int {
+  // her hangi bir sayı sıfıra bölünemez bu yüzden bu özel durumda program bir cevap üretmemektedir
+   if (s == 0){
+    null
+   } else {
+    //girilen sayıyı sistemde olan değere bölmektedir
+    veri /=s;
+    ?veri
+   };
+};
+
+//temizleme-kullanıcı istediği işlemleri yaptıktan sonra bu fonksiyonu kullanarak değeri 0'laya bilir.
+public func temizle() : async () {
+  veri :=0;
+};
+};
